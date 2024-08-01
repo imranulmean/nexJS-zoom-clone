@@ -16,12 +16,12 @@ const StreamVideoProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (!isLoaded || !user) return;
     if (!API_KEY) throw new Error('Stream API key is missing');
-
+    console.log("Showing the user Info: ", user);
     const client = new StreamVideoClient({
       apiKey: API_KEY,
       user: {
         id: user?.id,
-        name: user?.username || user?.id,
+        name: user?.firstName || user?.id,
         image: user?.imageUrl,
       },
       tokenProvider,
